@@ -1,0 +1,925 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.shape.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane id="AnchorPane" prefHeight="600.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.FXMLDocumentController">
+   <children>
+      <TabPane fx:id="tabPane" prefHeight="600.0" prefWidth="800.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab fx:id="startTab" text="Start">
+            <content>
+              <AnchorPane fx:id="startAnchor" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="start" stylesheets="@styles.css">
+                     <children>
+                        <StackPane prefHeight="569.0" prefWidth="800.0">
+                           <children>
+                              <VBox alignment="CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="welcomeVBox">
+                                 <StackPane.margin>
+                                    <Insets left="120.0" right="120.0" />
+                                 </StackPane.margin>
+                                 <children>
+                                    <ImageView fitHeight="158.0" fitWidth="543.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../media/logo2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Label text="BUILT BY ALVIN RAMOUTAR" textFill="#979797">
+                                       <font>
+                                          <Font name="Exo 2 Extra Light" size="12.0" />
+                                       </font>
+                                       <padding>
+                                          <Insets bottom="20.0" />
+                                       </padding>
+                                    </Label>
+                                    <Accordion fx:id="mainMenu">
+                                      <panes>
+                                        <TitledPane styleClass="menuOption" text="NEW GAME">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox layoutX="-1.0" prefHeight="180.0" prefWidth="560.0">
+                                                         <children>
+                                                            <Separator prefWidth="200.0" style="-fx-opacity: 0;">
+                                                               <padding>
+                                                                  <Insets top="5.0" />
+                                                               </padding>
+                                                            </Separator>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="32.0" prefWidth="560.0">
+                                                               <children>
+                                                                  <Label styleClass="menuText" text="Pattern" textFill="WHITE">
+                                                                     <font>
+                                                                        <Font size="16.0" />
+                                                                     </font>
+                                                                     <padding>
+                                                                        <Insets left="10.0" right="10.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <ChoiceBox fx:id="patternSelect" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.55); -fx-text-fill: white;" styleClass="patternSelect" />
+                                                                  <Label styleClass="menuText" text="Difficulty">
+                                                                     <padding>
+                                                                        <Insets left="50.0" right="10.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="difficultySelect" onKeyReleased="#selectDifficulty" prefHeight="25.0" prefWidth="53.0" style="-fx-background-color: rgba(0,0,0,0.25); -fx-text-fill: white;" text="32" />
+                                                               </children>
+                                                            </HBox>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="560.0">
+                                                               <children>
+                                                                  <Label styleClass="menuText" text="Custom Symbol Set">
+                                                                     <padding>
+                                                                        <Insets left="10.0" right="10.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="customSymbolsURL" prefHeight="25.0" prefWidth="323.0" style="-fx-background-color: rgba(0,0,0,0.25); -fx-text-fill: white;" />
+                                                                  <Button fx:id="symbolURLBrowse" mnemonicParsing="false" onAction="#browseForSymbolSet" style="-fx-background-color: rgba(0,0,0,0.4); -fx-text-fill: white;" text="Browse" />
+                                                               </children>
+                                                            </HBox>
+                                                            <Label text="*note that puzzle generation takes 1-15 seconds, and when generating, may freeze the application." textFill="#ffffff9a">
+                                                               <opaqueInsets>
+                                                                  <Insets />
+                                                               </opaqueInsets>
+                                                               <padding>
+                                                                  <Insets bottom="10.0" left="5.0" />
+                                                               </padding>
+                                                               <font>
+                                                                  <Font name="System Italic" size="12.0" />
+                                                               </font>
+                                                            </Label>
+                                                            <Button fx:id="startNewGame" mnemonicParsing="false" onAction="#startGame" style="-fx-opacity: 0.85;" text="START GAME">
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" />
+                                                               </VBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane styleClass="menuOption" text="RESUME GAME">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox layoutX="-1.0" prefHeight="180.0" prefWidth="560.0">
+                                                         <children>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="41.0" prefWidth="560.0">
+                                                               <children>
+                                                                  <Label styleClass="menuText" text="Load Game Save">
+                                                                     <padding>
+                                                                        <Insets left="10.0" right="10.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="loadGameURL" prefHeight="25.0" prefWidth="346.0" style="-fx-background-color: rgba(0,0,0,0.25); -fx-text-fill: white;" />
+                                                                  <Button fx:id="browseForSave" mnemonicParsing="false" onAction="#browseSaveURL" style="-fx-background-color: rgba(0,0,0,0.4); -fx-text-fill: white;" text="Browse" />
+                                                               </children>
+                                                               <padding>
+                                                                  <Insets bottom="5.0" top="5.0" />
+                                                               </padding>
+                                                            </HBox>
+                                                            <TextArea fx:id="savedGameDetails" editable="false" opacity="0.8" prefHeight="82.0" prefWidth="560.0" style="-fx-background-color: black;" />
+                                                            <Button fx:id="resumeGame" mnemonicParsing="false" onAction="#resumeGame" style="-fx-opacity: 0.85;" text="RESUME GAME">
+                                                               <VBox.margin>
+                                                                  <Insets left="10.0" top="10.0" />
+                                                               </VBox.margin>
+                                                            </Button>
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                          <TitledPane styleClass="menuOption" text="HELP">
+                                            <content>
+                                              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <TextArea layoutX="-3.0" layoutY="-2.0" prefHeight="182.0" prefWidth="562.0" styleClass="transparentTextArea" text="Welcome to Sudoku, a Java FXML Applet.&#10;&#10;When creating a new game, difficulty only applies to a Random pattern. The difficulty setting must be between 28-80, &#10;where the difficulty # correlates to the number of cells (guesses) given,&#10;The custom symbol set must be a folder containing image files with only the extensions .jpg or .png&#10;The symbols must be named with a single digit [1-9] followed by their extension.&#10;&#10;When resuming a game, a valid Sudoku save file must be loaded. A description of the loaded file will be shown. Should&#10;any fields appear null, then the save is not valid. Saved-games do not retain their symbol set.&#10;&#10;For Candidate Markup, hold the ALT-key, and type whatever you please.&#10;&#10;For help on playing the game itself, press 'Help' when in-game. To change various settings, visit the Options tab.&#10;&#10; &#10;" />
+                                                   </children></AnchorPane>
+                                            </content>
+                                          </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                 </children>
+                              </VBox>
+                           </children>
+                        </StackPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          <!--
+          <Tab text="Sudoku Game">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="game" stylesheets="@styles.css">
+                     <children>
+                        <Pane prefHeight="573.0" prefWidth="800.0" styleClass="gameBackground" />
+                        <BorderPane prefHeight="572.0" prefWidth="800.0">
+                           <center>
+                              <GridPane fx:id="grid" gridLinesVisible="true" prefHeight="572.0" prefWidth="590.0" styleClass="grid" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+                                <columnConstraints>
+                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true">
+                                      <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="1">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="2">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.rowIndex="1">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.rowIndex="2">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                    <GridPane alignment="CENTER" gridLinesVisible="true" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                       <children>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="1">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="2" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                          <TextField alignment="CENTER" onAction="#submitCell" promptText="Enter a value between 1-9." styleClass="cell" stylesheets="@styles.css" text="0" GridPane.rowIndex="2">
+                                             <font>
+                                                <Font name="Exo 2 Extra Light" size="32.0" />
+                                             </font>
+                                          </TextField>
+                                       </children>
+                                       <columnConstraints>
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       </columnConstraints>
+                                       <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       </rowConstraints>
+                                    </GridPane>
+                                 </children>
+                              </GridPane>
+                           </center>
+                           <left>
+                              <VBox prefHeight="572.0" prefWidth="228.0" styleClass="gameSideBar" BorderPane.alignment="CENTER">
+                                 <children>
+                                    <ImageView fitHeight="72.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@../media/logo2.png" />
+                                       </image>
+                                    </ImageView>
+                                    <Separator prefWidth="200.0" style="-fx-opacity: 0.5;" />
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="LEFT" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Label styleClass="gameSideBarStats" text="PUZZLE ID:" textFill="WHITE">
+                                             <font>
+                                                <Font name="Exo 2 Light" size="20.0" />
+                                             </font>
+                                          </Label>
+                                          <Label styleClass="gameSideBarStats" text="DIFFICULTY:" GridPane.rowIndex="1" />
+                                          <Label styleClass="gameSideBarStats" text="TIME ELAPSED:" GridPane.rowIndex="2" />
+                                          <Label styleClass="gameSideBarStats" text="STATUS:" GridPane.rowIndex="3" />
+                                       </children>
+                                    </GridPane>
+                                    <Separator prefWidth="200.0" style="-fx-opacity: 0.5;">
+                                       <VBox.margin>
+                                          <Insets bottom="10.0" />
+                                       </VBox.margin>
+                                    </Separator>
+                                    <GridPane>
+                                      <columnConstraints>
+                                        <ColumnConstraints halignment="CENTER" minWidth="10.0" prefWidth="100.0" />
+                                        <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                      </columnConstraints>
+                                      <rowConstraints>
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                      </rowConstraints>
+                                       <children>
+                                          <Button mnemonicParsing="false" prefHeight="102.0" prefWidth="186.0" styleClass="gameSideBarButton" text="Save &amp; Quit" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="165.0" styleClass="gameSideBarButton" text="Retire" GridPane.rowIndex="2" />
+                                          <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="220.0" styleClass="gameSideBarButton" text="Auto-Solve" GridPane.columnIndex="1" />
+                                          <ToggleButton mnemonicParsing="false" prefHeight="106.0" prefWidth="146.0" selected="true" styleClass="gameSideBarButton" text="Show Hints" />
+                                          <Button mnemonicParsing="false" prefHeight="118.0" prefWidth="220.0" styleClass="gameSideBarButton" text="E-mail Puzzle" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                                          <Button mnemonicParsing="false" prefHeight="98.0" prefWidth="165.0" styleClass="gameSideBarButton" text="Help" GridPane.rowIndex="1" />
+                                       </children>
+                                    </GridPane>
+                                 </children></VBox>
+                           </left>
+                        </BorderPane>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+          -->
+            <Tab fx:id="optionsTab" text="Options">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" styleClass="settings" stylesheets="@styles.css">
+                     <children>
+                        <Pane prefHeight="573.0" prefWidth="800.0" styleClass="gameBackground" stylesheets="@styles.css">
+                           <children>
+                              <VBox prefHeight="573.0" prefWidth="800.0">
+                                 <children>
+                                    <HBox alignment="CENTER_LEFT" prefHeight="67.0" prefWidth="800.0">
+                                       <children>
+                                          <ImageView fitHeight="72.0" fitWidth="227.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../media/logo2.png" />
+                                             </image>
+                                          </ImageView>
+                                          <Separator orientation="VERTICAL" prefHeight="200.0" style="-fx-opacity: 0.5;" />
+                                          <Label styleClass="settingsTitle" text="SETTINGS" />
+                                       </children>
+                                    </HBox>
+                                    <Accordion>
+                                      <panes>
+                                        <TitledPane styleClass="menuOption" text="User Interface">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox layoutX="-1.0" prefHeight="180.0" prefWidth="800.0">
+                                                         <children>
+                                                            <Label style="-fx-font-weight: bold;" text="Change Menu Background" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="12.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="800.0">
+                                                               <children>
+                                                                  <Label text="Image File" textFill="WHITE">
+                                                                     <padding>
+                                                                        <Insets left="5.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="menuBackgroundURL" prefHeight="25.0" prefWidth="385.0" style="-fx-background-color: rgba(255,255,255,0.5);" />
+                                                                  <Button fx:id="menuBackgroundBrowse" mnemonicParsing="false" onAction="#menuBackgroundBrowse" style="-fx-background-color: rgba(255,255,255,0.6);" text="Browse" />
+                                                                  <Button fx:id="applyMenuBG" mnemonicParsing="false" onAction="#applyMenuBG" text="APPLY">
+                                                                     <HBox.margin>
+                                                                        <Insets left="225.0" />
+                                                                     </HBox.margin>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                            <Label style="-fx-font-weight: bold;" text="Change Game Tab Background" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="12.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="800.0">
+                                                               <children>
+                                                                  <Label text="Image File" textFill="WHITE">
+                                                                     <padding>
+                                                                        <Insets left="5.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="gameBackgroundURL" prefHeight="25.0" prefWidth="384.0" style="-fx-background-color: rgba(255,255,255,0.5);" />
+                                                                  <Button fx:id="gameBackgroundBrowse" mnemonicParsing="false" onAction="#gameBackgroundBrowse" style="-fx-background-color: rgba(255,255,255,0.6);" text="Browse" />
+                                                                  <Label text="Tab" textFill="WHITE">
+                                                                     <padding>
+                                                                        <Insets left="10.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <ChoiceBox fx:id="tabSelect" prefWidth="150.0" style="-fx-background-color: rgba(255,255,255,0.5);" />
+                                                                  <Button fx:id="applyGameBG" mnemonicParsing="false" onAction="#applyGameBG" text="APPLY">
+                                                                     <HBox.margin>
+                                                                        <Insets left="46.0" />
+                                                                     </HBox.margin>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                        <TitledPane styleClass="menuOption" text="Miscellaneous">
+                                          <content>
+                                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                                   <children>
+                                                      <VBox layoutX="-1.0" prefHeight="180.0" prefWidth="800.0">
+                                                         <children>
+                                                            <Label style="-fx-font-weight: bold;" text="Add Background Music" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="12.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <HBox alignment="CENTER_LEFT" prefHeight="43.0" prefWidth="800.0">
+                                                               <children>
+                                                                  <Label text="Audio File" textFill="WHITE">
+                                                                     <padding>
+                                                                        <Insets left="5.0" />
+                                                                     </padding>
+                                                                  </Label>
+                                                                  <TextField fx:id="audioURL" prefHeight="25.0" prefWidth="385.0" style="-fx-background-color: rgba(255,255,255,0.5);" />
+                                                                  <Button fx:id="audioBrowse" mnemonicParsing="false" onAction="#audioBrowse" style="-fx-background-color: rgba(255,255,255,0.6);" text="Browse" />
+                                                                  <Button fx:id="applyAudio" mnemonicParsing="false" onAction="#applyAudio" text="APPLY">
+                                                                     <HBox.margin>
+                                                                        <Insets left="225.0" />
+                                                                     </HBox.margin>
+                                                                  </Button>
+                                                               </children>
+                                                            </HBox>
+                                                            <Label style="-fx-font-weight: bold;" text="Set Volume" textFill="WHITE">
+                                                               <font>
+                                                                  <Font name="System Bold" size="12.0" />
+                                                               </font>
+                                                               <padding>
+                                                                  <Insets left="5.0" top="5.0" />
+                                                               </padding>
+                                                            </Label>
+                                                            <HBox prefHeight="31.0" prefWidth="800.0">
+                                                               <children>
+                                                                  <Slider fx:id="volumeSlider" blockIncrement="0.05" majorTickUnit="0.1" max="1.0" minorTickCount="10" onMouseDragged="#changeVolume" prefHeight="24.0" prefWidth="443.0" showTickMarks="true" snapToTicks="true" value="1.0" />
+                                                                  <Button fx:id="stopMusic" mnemonicParsing="false" onAction="#stopMusic" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: rgba(255,255,255,0.6);" text="Stop">
+                                                                     <HBox.margin>
+                                                                        <Insets left="10.0" />
+                                                                     </HBox.margin>
+                                                                  </Button>
+                                                                  <Button fx:id="playMusic" mnemonicParsing="false" onAction="#playMusic" prefHeight="25.0" prefWidth="45.0" style="-fx-background-color: rgba(255,255,255,0.6);" text="Play" />
+                                                               </children>
+                                                            </HBox>
+                                                         </children>
+                                                      </VBox>
+                                                   </children></AnchorPane>
+                                          </content>
+                                        </TitledPane>
+                                      </panes>
+                                    </Accordion>
+                                    <Label fx:id="appliedSettingsStatus" alignment="CENTER" contentDisplay="CENTER" prefHeight="17.0" prefWidth="813.0" style="-fx-font-style: italic;" textAlignment="CENTER" textFill="#8d8d8d" />
+                                 </children>
+                              </VBox>
+                           </children>
+                        </Pane>
+                     </children></AnchorPane>
+              </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+   </children>
+</AnchorPane>

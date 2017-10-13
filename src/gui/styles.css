@@ -1,0 +1,144 @@
+/*******************************************************************************
+* Author: Alvin Ramoutar (991454918)
+* Developed for: Jonathan Penava & Sheridan College (JAVA 2 FINAL)
+* Last Updated: April 19th, 2017
+* SUDOKU
+*   Sudoku is a JavaFXML application meant to deliver a comfortable and 
+*   intuitive Sudoku gameplay experience. 
+*   Sudoku in itself is a puzzle game sharing similar properties to Latin
+*   Squares; the objective being to completely fill a grid while abiding by
+*   certain rules.
+*******************************************************************************/
+
+/* Main stylesheet for Sudoku */
+
+/* Implementing custom fonts from the Exo2 family */
+@font-face {
+    font-family: 'Exo2-ExtraLight';
+    src: url('../media/Exo2-ExtraLight.ttf');
+}
+@font-face {
+    font-family: 'Exo2-Light';
+    src: url('../media/Exo2-Light.ttf');
+}
+@font-face {
+    font-family: 'Exo2-Medium';
+    src: url('../media/Exo2-Medium.ttf');
+}
+
+.text {
+    -fx-font-family: "Exo2-ExtraLight";
+}
+
+.start {
+    -fx-background-image: url("../media/8RhGvnp.png");
+}
+
+.welcomeVBox {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.menuOption > .title {
+    -fx-background-color: linear-gradient(to right, rgba(227, 227, 227, 0.75), rgba(0, 0, 0, 0));
+}
+
+.menuOption > .content {
+    -fx-background-color: rgba(255,255,255,0.1);
+}
+
+.menuText {
+    -fx-text-fill: white;
+    -fx-font-size: 16;
+}
+
+.transparentTextArea .content {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 10;
+}
+.transparentTextArea {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+    -fx-font-size: 10;
+}
+.transparentTextArea .scroll-pane {
+    -fx-background-color: transparent;
+}
+.transparentTextArea .scroll-pane .viewport{
+    -fx-background-color: transparent;
+}
+.transparentTextArea .scroll-pane .content{
+    -fx-background-color: transparent;
+}
+
+.cell {
+    -fx-text-fill: white;
+    -fx-background-color: transparent;
+}
+
+.badCell {
+    -fx-text-fill: white;
+    -fx-background-color:  rgba(255,0,0,0.4);
+}
+
+.affectedCell {
+    -fx-text-fill: white;
+    -fx-border-color: rgba(255,0,0,0.4);
+    -fx-border-width: 3;
+}
+
+.markupCell {
+    -fx-text-fill: darkgray;
+    -fx-border-color: orange;
+    -fx-border-width: 1;
+    -fx-font-size: 12;
+}
+
+.grid {
+    -fx-background-color: transparent;
+}
+
+.game {
+    -fx-background-image: url("../media/1po54lb.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+
+.gameBackground {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.gameSideBar {
+    -fx-background-color: rgba(0,0,0,0.5);
+}
+
+.gameSideBarStats {
+    -fx-text-fill: rgb(225,255,225);
+    -fx-font-size: 14;
+    -fx-font-family: "Exo2-Light";
+    
+}
+
+.gameSideBarButton {
+    -fx-opacity: 0.75;
+    -fx-font-family: "Exo2-Light";
+    -fx-font-size: 12;
+}
+
+.gameSideBarButton:selected {
+    -fx-background-color: rgba(150,150,150,1);
+}
+
+.settings {
+    -fx-background-image: url("../media/dIT5iLg.png");
+    -fx-background-repeat: stretch;   
+    -fx-background-position: center center;
+    -fx-background-size: cover;
+}
+
+.settingsTitle {
+    -fx-font-family: "Exo2-ExtraLight";
+    -fx-font-size: 20;
+    -fx-text-fill: white;
+}
