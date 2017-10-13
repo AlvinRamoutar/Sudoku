@@ -13,3 +13,5 @@
    Squares; the objective being to completely fill a grid while abiding by
    certain rules.
    <br>
+   <br>
+<a href="https://github.com/AlvinRamoutar/Sudoku/raw/master/dist/Sudoku_2017-04-17.zip">You can download it here.</a>
