@@ -14,4 +14,4 @@
    certain rules.
    <br>
    <br>
-<a href="https://github.com/AlvinRamoutar/Sudoku/raw/master/dist/Sudoku_2017-04-17.zip">You can download it here.</a>
+<a href="https://github.com/AlvinRamoutar/Sudoku/raw/master/dist/builds/Sudoku.zip">You can download it here.</a>
